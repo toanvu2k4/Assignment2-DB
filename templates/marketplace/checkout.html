@@ -29,7 +29,7 @@
                                                     First Name: {{ form.first_name }}
                                                 </div>
                                                 <div class="form-group col-md-6 col-sm-12 col-lg-6">
-                                                    Last Name: {{ form.last_name }}
+                                                    Last and Middle Name: {{ form.last_and_middle_name }}
                                                 </div>
                                             </div>
 
@@ -158,9 +158,10 @@
                                                 </label>
                                                 &emsp;
                                                 <label>
-                                                    <input type="radio" name="payment_method" value="RazorPay">
-                                                    <img src="{% static 'images/razorpay_logo.png' %}" alt="RazorPay" width="100">
+                                                    <input type="radio" name="payment_method" value="MoMo">
+                                                    <img id="MoMo" src="{% static 'images/MoMo_Logo.png' %}" alt="MoMo" width="100">
                                                 </label>
+                                                
                                             </div>
                                             <span class="text-danger" id="payment-method-error"></span>
                                             <!-- Select payment method -->

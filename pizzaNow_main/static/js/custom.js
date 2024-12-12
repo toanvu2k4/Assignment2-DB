@@ -23,6 +23,7 @@ $(document).ready(function () {
           // subtotal, tax and grand total
           applyCartAmounts(
             response.cart_amount["subtotal"],
+            response.cart_amount["tax_dict"],
             response.cart_amount["grand_total"]
           );
         }
@@ -62,6 +63,7 @@ $(document).ready(function () {
 
           applyCartAmounts(
             response.cart_amount["subtotal"],
+            response.cart_amount["tax_dict"],
             response.cart_amount["grand_total"]
           );
 
@@ -94,6 +96,7 @@ $(document).ready(function () {
 
           applyCartAmounts(
             response.cart_amount["subtotal"],
+            response.cart_amount["tax_dict"],
             response.cart_amount["grand_total"]
           );
 
@@ -105,26 +108,35 @@ $(document).ready(function () {
   });
 
   // delete the cart element if the qty is 0
-function removeCartItem(cartItemQty, cart_id) {
+  function removeCartItem(cartItemQty, cart_id) {
     if (cartItemQty <= 0) {
       // remove the cart item element
       document.getElementById("cart-item-" + cart_id).remove();
     }
   }
 
-// Check if the cart is empty
-function checkEmptyCart(){
-    var cart_counter = document.getElementById('cart_counter').innerHTML
-    if(cart_counter == 0){
-        document.getElementById("empty-cart").style.display = "block";
+  // Check if the cart is empty
+  function checkEmptyCart() {
+    var cart_counter = document.getElementById("cart_counter").innerHTML;
+    if (cart_counter == 0) {
+      document.getElementById("empty-cart").style.display = "block";
     }
-}
+  }
 
-// apply cart amounts
-function applyCartAmounts(subtotal, grand_total){
-    if(window.location.pathname == '/cart/'){
-        $('#subtotal').html(subtotal)
-        $('#total').html(grand_total)
+  // apply cart amounts
+  function applyCartAmounts(subtotal, tax_dict, grand_total) {
+    if (window.location.pathname == "/cart/") {
+      $("#subtotal").html(subtotal);
+      $("#total").html(grand_total);
+
+      console.log(tax_dict);
+      for (key1 in tax_dict) {
+        console.log(tax_dict[key1]);
+        for (key2 in tax_dict[key1]) {
+          // console.log(tax_dict[key1][key2])
+          $("#tax-" + key1).html(tax_dict[key1][key2]);
+        }
+      }
     }
-}
+  }
 });
