@@ -88,7 +88,6 @@ class Order(models.Model):
             'tax_dict': tax_dict, 
             'grand_total': grand_total,
         }
-
         return context
 
     def __str__(self):

@@ -48,9 +48,6 @@ def place_order(request):
             tax_dict.update({tax_type: {str(tax_percentage) : str(tax_amount)}})
         # Construct total data
         total_data.update({fooditem.vendor.id: {str(subtotal): str(tax_dict)}})
-    
-
-        
 
     subtotal = get_cart_amounts(request)['subtotal']
     total_tax = get_cart_amounts(request)['tax']
